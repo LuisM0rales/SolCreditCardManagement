@@ -3,9 +3,60 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolCreditCardManagement.Infrastructure", "SolCreditCardManagement.Data\SolCreditCardManagement.Infrastructure.csproj", "{49471E68-1E77-4BC6-8E13-8F572E87D75D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolCreditCardManagement.Domain", "SolCreditCardManagement.Domain\SolCreditCardManagement.Domain.csproj", "{B11E7C0F-D4F8-4C67-89F4-675A0283AA31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolCreditCardManagement.API", "SolCreditCardManagement.API\SolCreditCardManagement.API.csproj", "{45F7DBB1-2998-4DC2-A136-F7E87F191E2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{137465FD-ABB8-4091-AB26-EA1BE024377A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{72EFBE75-B2D4-4291-B0C7-A80B728D6E3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{961B08F1-FD64-403F-8457-5DDD0AB04FFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{72EABB43-C844-4BB8-BE9D-EBE7CC12F6C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{BC60DC6D-ECE6-45D7-A588-CFEDA2893CD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CE204073-B03F-4B13-8CE5-12743B933300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolCreditCardManagement.Application", "SolCreditCardManagement.Application\SolCreditCardManagement.Application.csproj", "{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49471E68-1E77-4BC6-8E13-8F572E87D75D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49471E68-1E77-4BC6-8E13-8F572E87D75D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49471E68-1E77-4BC6-8E13-8F572E87D75D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49471E68-1E77-4BC6-8E13-8F572E87D75D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B11E7C0F-D4F8-4C67-89F4-675A0283AA31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B11E7C0F-D4F8-4C67-89F4-675A0283AA31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B11E7C0F-D4F8-4C67-89F4-675A0283AA31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B11E7C0F-D4F8-4C67-89F4-675A0283AA31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F7DBB1-2998-4DC2-A136-F7E87F191E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F7DBB1-2998-4DC2-A136-F7E87F191E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F7DBB1-2998-4DC2-A136-F7E87F191E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F7DBB1-2998-4DC2-A136-F7E87F191E2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{49471E68-1E77-4BC6-8E13-8F572E87D75D} = {CE204073-B03F-4B13-8CE5-12743B933300}
+		{B11E7C0F-D4F8-4C67-89F4-675A0283AA31} = {BC60DC6D-ECE6-45D7-A588-CFEDA2893CD0}
+		{45F7DBB1-2998-4DC2-A136-F7E87F191E2E} = {72EABB43-C844-4BB8-BE9D-EBE7CC12F6C8}
+		{72EABB43-C844-4BB8-BE9D-EBE7CC12F6C8} = {137465FD-ABB8-4091-AB26-EA1BE024377A}
+		{BC60DC6D-ECE6-45D7-A588-CFEDA2893CD0} = {137465FD-ABB8-4091-AB26-EA1BE024377A}
+		{CE204073-B03F-4B13-8CE5-12743B933300} = {137465FD-ABB8-4091-AB26-EA1BE024377A}
+		{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D} = {BC60DC6D-ECE6-45D7-A588-CFEDA2893CD0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {247BA764-9168-4238-AA4A-A56E2E8E191A}
