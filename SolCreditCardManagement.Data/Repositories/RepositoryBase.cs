@@ -71,6 +71,7 @@ namespace SolCreditCardManagement.Infrastructure.Repositories
 
         public async Task<T> UpdateAsync(T entity)
         {
+            _context.Set<T>().Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return entity;
@@ -80,6 +81,29 @@ namespace SolCreditCardManagement.Infrastructure.Repositories
         {
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
+        }
+
+        public void AddEntity(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
+
+        public void UpdateEntity(T entity)
+        {
+            _context.Set<T>().Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void DeleteEntity(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
+
+        public async Task<T> GetByProcedure(FormattableString procedureCommand)
+        {
+            var result = await _context.Set<T>().FromSqlInterpolated(procedureCommand).ToListAsync();
+
+            return result.FirstOrDefault();
         }
     }
 }

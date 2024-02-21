@@ -1,6 +1,7 @@
 using SolCreditCardManagement.API.Middleware;
 using SolCreditCardManagement.Application;
 using SolCreditCardManagement.Infrastructure;
+using SolCreditCardManagement.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 

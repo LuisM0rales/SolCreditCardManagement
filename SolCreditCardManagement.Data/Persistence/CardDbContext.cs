@@ -42,5 +42,15 @@ namespace SolCreditCardManagement.Infrastructure.Persistence
         public DbSet<GlobalConfiguration>? GlobalConfigurations { get; set; }
         public DbSet<Transaction>? Transactions { get; set; }
         public DbSet<TransactionType>? TransactionTypes { get; set; }
+        public DbSet<Statement>? Statements { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Statement>(Entity =>
+            {
+                Entity.ToView("Statements");
+                Entity.HasNoKey();
+            });
+        }
     }
 }

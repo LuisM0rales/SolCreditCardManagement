@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SolCreditCardManagement.Application.Features.Customers.Commands.CreateCustomer;
-using SolCreditCardManagement.Application.Features.Customers.Commands.DeleteCustomer;
 using SolCreditCardManagement.Application.Features.Customers.Commands.UpdateCustomer;
 using SolCreditCardManagement.Application.Features.Customers.Queries.GetCustomersList;
 using System.Net;
@@ -47,20 +46,20 @@ namespace SolCreditCardManagement.API.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}", Name ="DeleteCustomer")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesDefaultResponseType]
-        public async Task<ActionResult> DeleteCustomer(int id)
-        {
-            var command = new DeleteCustomerCommand 
-            {
-                Id = id
-            };
+        //[HttpDelete("{id}", Name ="DeleteCustomer")]
+        //[ProducesResponseType(StatusCodes.Status204NoContent)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //[ProducesDefaultResponseType]
+        //public async Task<ActionResult> DeleteCustomer(int id)
+        //{
+        //    var command = new DeleteCustomerCommand 
+        //    {
+        //        Id = id
+        //    };
 
-            await _mediator.Send(command);
+        //    await _mediator.Send(command);
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
     }
 }

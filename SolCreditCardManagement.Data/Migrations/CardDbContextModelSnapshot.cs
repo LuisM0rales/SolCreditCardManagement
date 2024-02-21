@@ -152,6 +152,53 @@ namespace SolCreditCardManagement.Data.Migrations
                     b.ToTable("GlobalConfigurations");
                 });
 
+            modelBuilder.Entity("SolCreditCardManagement.Domain.Statement", b =>
+                {
+                    b.Property<decimal?>("AvailableBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("CardNumMask")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal?>("CreditLimit")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("CurrentBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("InterestRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("MinAmountPay")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("MinInterestRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("RedeemableInterest")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("TotalCurrentMonthPurchase")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("TotalPreviousMonthPurchase")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.ToView("Statements");
+                });
+
             modelBuilder.Entity("SolCreditCardManagement.Domain.Transaction", b =>
                 {
                     b.Property<int>("Id")
@@ -166,6 +213,9 @@ namespace SolCreditCardManagement.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CreditCardId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -177,6 +227,8 @@ namespace SolCreditCardManagement.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreditCardId");
 
                     b.HasIndex("TransactionTypeId");
 
@@ -229,11 +281,19 @@ namespace SolCreditCardManagement.Data.Migrations
 
             modelBuilder.Entity("SolCreditCardManagement.Domain.Transaction", b =>
                 {
+                    b.HasOne("SolCreditCardManagement.Data.CreditCard", "CreditCard")
+                        .WithMany()
+                        .HasForeignKey("CreditCardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SolCreditCardManagement.Domain.TransactionType", "TransactionType")
                         .WithMany()
                         .HasForeignKey("TransactionTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CreditCard");
 
                     b.Navigation("TransactionType");
                 });

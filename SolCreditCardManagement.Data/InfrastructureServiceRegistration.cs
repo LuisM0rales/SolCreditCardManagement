@@ -15,8 +15,14 @@ namespace SolCreditCardManagement.Infrastructure
                 options.UseSqlServer(configuration.GetConnectionString("ConnectionString"))
             );
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<CardDbContextSeed>();
+            var scope = services.BuildServiceProvider().CreateScope();
+            var dbIni = scope.ServiceProvider.GetRequiredService<CardDbContextSeed>();
+            dbIni.SeedAsync().Wait();
+
 
             return services;
         }

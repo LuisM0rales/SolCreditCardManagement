@@ -9,20 +9,20 @@ namespace SolCreditCardManagement.Application.Features.Customers.Commands.Update
 {
     public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerCommand>
     {
-        private readonly ICustomerRepository _customerRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<UpdateCustomerCommandHandler> _logger;
 
-        public UpdateCustomerCommandHandler(ICustomerRepository customerRepository, IMapper mapper, ILogger<UpdateCustomerCommandHandler> logger)
+        public UpdateCustomerCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<UpdateCustomerCommandHandler> logger)
         {
-            _customerRepository = customerRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
         }
 
         public async Task<Unit> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
         {
-            var customerToUpdate = await _customerRepository.GetByIdAsync(request.Id);
+            var customerToUpdate = await _unitOfWork.CustomerRepository.GetByIdAsync(request.Id);
 
             if (customerToUpdate == null)
             {
@@ -32,9 +32,11 @@ namespace SolCreditCardManagement.Application.Features.Customers.Commands.Update
 
             _mapper.Map(request, customerToUpdate, typeof(UpdateCustomerCommand), typeof(Customer));
 
-            await _customerRepository.UpdateAsync(customerToUpdate);
+            _unitOfWork.CustomerRepository.UpdateEntity(customerToUpdate);
 
-            _logger.LogInformation($"La operacion fue exitosa actualizando el streamer {request.Id}");
+            await _unitOfWork.Complete();
+
+            _logger.LogInformation($"La operacion fue exitosa actualizando el customer {request.Id}");
 
             return Unit.Value;
         }

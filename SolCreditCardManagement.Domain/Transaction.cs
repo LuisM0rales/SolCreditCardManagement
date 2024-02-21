@@ -1,4 +1,5 @@
-﻿using SolCreditCardManagement.Domain.Common;
+﻿using SolCreditCardManagement.Data;
+using SolCreditCardManagement.Domain.Common;
 
 namespace SolCreditCardManagement.Domain
 {
@@ -8,5 +9,7 @@ namespace SolCreditCardManagement.Domain
         public double Amount { get; set; }
         public int TransactionTypeId { get; set; }
         public virtual TransactionType? TransactionType { get; set; }
+        public int CreditCardId { get; set; }
+        public virtual CreditCard? CreditCard { get; set; }
     }
 }

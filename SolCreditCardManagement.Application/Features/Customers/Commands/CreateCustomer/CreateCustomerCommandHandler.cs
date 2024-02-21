@@ -8,13 +8,13 @@ namespace SolCreditCardManagement.Application.Features.Customers.Commands.Create
 {
     public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, int>
     {
-        private readonly ICustomerRepository _customerRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<CreateCustomerCommandHandler> _logger;
 
-        public CreateCustomerCommandHandler(ICustomerRepository customerRepository, IMapper mapper, ILogger<CreateCustomerCommandHandler> logger)
+        public CreateCustomerCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<CreateCustomerCommandHandler> logger)
         {
-            _customerRepository = customerRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
         }
@@ -22,11 +22,16 @@ namespace SolCreditCardManagement.Application.Features.Customers.Commands.Create
         public async Task<int> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
         {
             var customerEntity = _mapper.Map<Customer>(request);
-            var newCustomer = await _customerRepository.AddAsync(customerEntity);
+            _unitOfWork.CustomerRepository.AddEntity(customerEntity);
+            var result = await _unitOfWork.Complete();
 
-            _logger.LogInformation($"Customer {newCustomer.Id} fue creado exitosamente.");
+            if(result <= 0)
+            {
+                throw new Exception($"No se pudo insertar el dato de customer");
+            }
+            _logger.LogInformation($"Customer {customerEntity.Id} fue creado exitosamente.");
 
-            return newCustomer.Id;
+            return customerEntity.Id;
         }
     }
 }
