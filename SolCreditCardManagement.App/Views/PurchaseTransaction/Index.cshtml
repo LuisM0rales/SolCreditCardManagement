@@ -1,0 +1,84 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Registro de Compras";
+    var creditcardid = TempData["creditCardId"];
+    var name = ViewData["nombre"];
+    var ccnum = ViewData["cardnum"];
+}
+<!-- Incluye SweetAlert desde el CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<form data-@creditcardid asp-action="Save" asp-controller="PurchaseTransaction" method="post" class="row g-3">
+    <div class="card" style="width:100%">
+        <div class="card-header">
+            <div class="row"><h5 class="card-header">Registro Compra de Tarjeta Credito</h5></div>
+            <div class="row">
+                <div class="col-auto"><b>Nombre del Cliente:</b> @name</div>
+                <div class="col-auto"><b>Número de tarjeta de crédito:</b> @ccnum</div>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <label class="form-label"><b>Fecha de compra: </b></label>
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" placeholder="Date" name="FechaPago" id="FechaPago" type="date" required />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <label class="form-label"><b>Descripcion: </b></label>
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" placeholder="Description" name="Description" id="Description" type="text" required />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <label class="form-label"><b>Monto: </b></label>
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" placeholder="Amount" name="MontoPago" id="MontoPago" type="number" min="1.00" step=".01" required />
+                </div>
+            </div>
+            <hr />
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Guardar</button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mb-3" type="button">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@if (ViewBag.IsSuccess is not null && ViewBag.IsSuccess)
+{
+    <script>
+        Swal.fire({
+            title: 'Éxito',
+            text: 'La transacción se ha guardado exitosamente.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '@Url.Action("Index", "Home")';
+            }
+        });
+    </script>
+}
+else if(ViewBag.IsSuccess is not null)
+{
+    <script>
+        Swal.fire({
+            title: 'Error',
+            text: 'Ha ocurrido un error al guardar la transacción.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+}

@@ -2,6 +2,7 @@
 {
     public class CreditCardVm
     {
+        public int Id { get; set; }
         public string EmbossedName { get; set; } = string.Empty;
         public string CardNumber { get; set; } = string.Empty;
         public string AccountNumber { get; set; } = string.Empty;

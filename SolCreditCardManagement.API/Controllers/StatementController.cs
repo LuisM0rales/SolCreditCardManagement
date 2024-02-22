@@ -16,7 +16,7 @@ namespace SolCreditCardManagement.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("creditcardid", Name = "GetStatement")]
+        [HttpGet("{creditcardid}", Name = "GetStatement")]
         [ProducesResponseType(typeof(StatementVm), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<StatementVm>> GetStatement(int creditcardid)
         {

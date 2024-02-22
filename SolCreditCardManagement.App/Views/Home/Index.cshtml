@@ -1,0 +1,73 @@
+﻿@using SolCreditCardManagement.App.Utils;
+@model IEnumerable<SolCreditCardManagement.App.Models.CreditCardViewModel>;
+@{
+    ViewData["Title"] = "Listado Tarjetas";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center pb-4">
+                    <h2 class="card-title mb-0">Listado de tarjetas</h2>
+                </div>
+                <table id="dataTableApp" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Numero Tarjeta</th>
+                            <th>Nombre</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="card-number">@item.CardNumber.ToCardFormat()</td>
+                                <td>@item.EmbossedName</td>
+                                <td>
+                                    <a asp-controller="Statement" asp-action="Index" 
+                                       asp-route-id="@item.Id" class="card text-decoration-none">
+                                       Estado cuenta
+                                    </a>
+                                    <a asp-controller="PurchaseTransaction" asp-action="Index"
+                                       asp-route-id="@item.Id" asp- class="card text-decoration-none">
+                                       Registrar Compra
+                                    </a>
+                                    <a asp-controller="PaymentTransaction" asp-action="Index"
+                                       asp-route-id="@item.Id" asp-route-cardnum = "@item.CardNumber.ToCardFormat()" asp-route-nombre = "@item.EmbossedName"
+                                       class="card text-decoration-none">
+                                       Registrar Pago
+                                    </a>
+                                    <a asp-controller="TransactionHistory" asp-action="Index"
+                                       asp-route-id="@item.Id" asp-route-cardnum="@item.CardNumber.ToCardFormat()" asp-route-nombre="@item.EmbossedName"
+                                       class="card text-decoration-none">
+                                       Transacciones
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.card-number').each(function () {
+                var cardNumber = $(this).text().trim();
+                var cardIconSpan = $(this).next('.card-icon');
+
+                if (cardNumber.startsWith('4')) {
+                    cardIconSpan.html('<i class="bi bi-credit-card-2-front-fill"></i>');
+                } else if (cardNumber.startsWith('5')) {
+                    cardIconSpan.html('<i class="bi bi-credit-card-fill"></i>');
+                }
+            });
+        });
+    </script>
+}

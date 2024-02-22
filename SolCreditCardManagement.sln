@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolCreditCardManagement.Application", "SolCreditCardManagement.Application\SolCreditCardManagement.Application.csproj", "{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{54F0DCA2-1387-47AD-B2F1-AF2AA718AE97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolCreditCardManagement.App", "SolCreditCardManagement.App\SolCreditCardManagement.App.csproj", "{63B9CD61-BE69-4E60-8735-C07493B2DAA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63B9CD61-BE69-4E60-8735-C07493B2DAA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63B9CD61-BE69-4E60-8735-C07493B2DAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63B9CD61-BE69-4E60-8735-C07493B2DAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63B9CD61-BE69-4E60-8735-C07493B2DAA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +65,8 @@ Global
 		{BC60DC6D-ECE6-45D7-A588-CFEDA2893CD0} = {137465FD-ABB8-4091-AB26-EA1BE024377A}
 		{CE204073-B03F-4B13-8CE5-12743B933300} = {137465FD-ABB8-4091-AB26-EA1BE024377A}
 		{F86DB2AA-8951-4AC0-94CD-394BBAC3E12D} = {BC60DC6D-ECE6-45D7-A588-CFEDA2893CD0}
+		{54F0DCA2-1387-47AD-B2F1-AF2AA718AE97} = {137465FD-ABB8-4091-AB26-EA1BE024377A}
+		{63B9CD61-BE69-4E60-8735-C07493B2DAA8} = {54F0DCA2-1387-47AD-B2F1-AF2AA718AE97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {247BA764-9168-4238-AA4A-A56E2E8E191A}
