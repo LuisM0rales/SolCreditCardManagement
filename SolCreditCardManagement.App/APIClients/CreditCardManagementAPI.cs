@@ -46,5 +46,14 @@ namespace SolCreditCardManagement.App.APIClients
             var contentRes = await response.Content.ReadAsStringAsync();
             return response;
         }
+
+        public async Task<HttpResponseMessage> PutClientHelper(string url, object parameter)
+        {
+            string fullurl = string.Concat(_apiUrl, url);
+            var content = new StringContent(parameter.ToJson(), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync(fullurl, content);
+            var contentRes = await response.Content.ReadAsStringAsync();
+            return response;
+        }
     }
 }

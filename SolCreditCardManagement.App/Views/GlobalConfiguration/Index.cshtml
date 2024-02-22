@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SolCreditCardManagement.App.Models.GlobalConfigurationViewModel>
+
+@{
+    ViewData["Title"] = "Configuraciones Globales";
+}
+
+<h1>Listado Configuraciones Globales</h1>
+
+<p>
+    <a asp-action="Create">Nuevo</a>
+</p>
+<table id="dataTableApp" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfigurationVal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfigurationVal)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { Id=item.Id, Code=item.Code , ConfigurationVal= item.ConfigurationVal })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
