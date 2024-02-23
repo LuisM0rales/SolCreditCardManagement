@@ -10,7 +10,7 @@
 
 Proyecto de estado de cuenta, muestra y exporta el estado de cuenta a Excel, PDF, etc, puedes configurar la tasa de interes
 
-El proyecto se hizo aplicando varias capas aplicando CleanArchitecture, las cuales son:
+El proyecto se hizo en varias capas aplicando CleanArchitecture, las cuales son:
 
 - `Capa de aplicacion`: la cual contiene las operaciones y modelos que definen la aplicacion segun caso de uso implementando CQRS.
 - `Capa de dominio`: la cual contiene las entidades centrales y los objetos de negocio del dominio.
